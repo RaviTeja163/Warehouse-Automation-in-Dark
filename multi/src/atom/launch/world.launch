@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+	<arg name="world" default="warehouse" />
+	<!-- Robot pose -->
+	<arg name="x" default="5"/>
+	<arg name="y" default="0"/>
+	<arg name="z" default="0.1"/>
+	<arg name="roll" default="0"/>
+	<arg name="pitch" default="0"/>
+	<arg name="yaw" default="3.14"/>
+	<arg name="robot_name" default="atom"/>
+	
+	<!-- Spawn My Robot -->
+	<node name="urdf_spawner_robot" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+		args="-urdf -param robot_description -model atom
+			  -x $(arg x) -y $(arg y) -z $(arg z)
+			  -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
+
+	<!-- Launch other relevant files-->
+	<include file="$(find atom)/launch/robot_description.launch"/>
+	
+	<!-- World File -->
+	<arg name="world_file" default="$(find robot_description)/world/$(arg world).world"/>
+
+	<!-- Launch Gazebo World -->
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="use_sim_time" value="true"/>
+		<arg name="verbose" value="false"/>
+		<arg name="debug" value="false"/>
+		<arg name="gui" value="true" />
+		<arg name="world_name" value="$(arg world_file)"/>
+
+	</include>
+
+	<!-- Robot pose -->
+	<arg name="xx" default="0"/>
+	<arg name="yy" default="-4"/>
+	<arg name="zz" default="0.1"/>
+	<arg name="roll_2" default="0"/>
+	<arg name="pitch_2" default="0"/>
+	<arg name="yaw_2" default="1.57"/>
+	<!-- <arg name="robot_name" default="atom"/> -->
+
+
+	<!-- Spawn My Robot -->
+	<node name="urdf_spawner_robot_two" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+		args="-urdf -param robot_description_two -model atom_two
+			  -x $(arg xx) -y $(arg yy) -z $(arg zz)
+			  -R $(arg roll_2) -P $(arg pitch_2) -Y $(arg yaw_2)"/>
+	<!-- <node
+		pkg="atom"
+		type="pose_goal_first.py"
+		name="pose_goal_first"
+		output="screen"
+   />
+   <node
+		pkg="atom"
+		type="pose_goal.py"
+		name="pose_goal"
+		output="screen"
+   /> -->
+
+</launch>

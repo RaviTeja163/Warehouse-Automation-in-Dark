@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+<!-- tag pose -->
+	<arg name="x" default="3"/>
+	<arg name="y" default="10"/>
+	<arg name="z" default="0.5"/>
+	<arg name="roll" default="0"/>
+	<arg name="pitch" default="1.57"/>
+	<arg name="yaw" default="0"/>
+  <arg name="tag_name" default= "tagzero" />
+	<arg name="sdf_file" default="$(find atom)/model/tag/model.sdf"/>
+
+<!-- World File -->
+	<arg name="world_file" default="$(find atom)/worlds/empty.world"/>
+
+<!-- Launch Gazebo World -->
+<!-- <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_file)"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>  -->
+
+  <!-- Spawn My Robot -->
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+		args="-file $(arg sdf_file) -sdf -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model $(arg tag_name)"/>
+
+</launch>
