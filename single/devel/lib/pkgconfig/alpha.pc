@@ -1,0 +1,8 @@
+prefix=/home/ravi/src_lift/devel
+
+Name: alpha
+Description: Description of alpha
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

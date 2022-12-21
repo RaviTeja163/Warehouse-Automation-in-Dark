@@ -1,0 +1,8 @@
+prefix=/home/ravi/src_lift/devel
+
+Name: beta_description
+Description: Description of beta_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

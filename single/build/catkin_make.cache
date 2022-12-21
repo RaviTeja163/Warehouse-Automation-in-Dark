@@ -1,0 +1,2 @@
+alpha:apriltag_ros/apriltag_ros:atom:beta_description:odom_noise:robot_control:robot_description:velodyne_description:velodyne_gazebo_plugins:velodyne_simulator
+-DCATKIN_DEVEL_PREFIX=/home/ravi/src_lift/devel -DCMAKE_INSTALL_PREFIX=/home/ravi/src_lift/install -G Unix Makefiles

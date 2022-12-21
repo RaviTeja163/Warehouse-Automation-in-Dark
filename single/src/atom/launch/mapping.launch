@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <node name="slam_gmapping" 
+          pkg="gmapping" 
+          type="slam_gmapping">
+
+          <rosparam file="$(find atom)/config/slam_gmapping_params.yaml" />
+          <remap from="scan" to="/scan" />
+
+    </node>
+
+</launch>

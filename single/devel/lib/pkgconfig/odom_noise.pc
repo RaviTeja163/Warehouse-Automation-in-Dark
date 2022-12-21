@@ -1,0 +1,8 @@
+prefix=/home/ravi/src_lift/devel
+
+Name: odom_noise
+Description: Description of odom_noise
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
